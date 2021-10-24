@@ -1,0 +1,7 @@
+.container{
+    position: static;
+    width: 100%;
+    background-color: #ffffff;
+    display: inline-block;
+    color: black;
+}

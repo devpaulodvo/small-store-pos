@@ -1,0 +1,22 @@
+.nav {
+    list-style-type: none;
+    padding: 1;
+    margin: 0;
+    text-align: center;
+  }
+
+.nav li{
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline;
+    margin-right: 50px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav li:hover {
+  color: #fddb3a;
+  cursor: pointer;
+}

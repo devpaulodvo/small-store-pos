@@ -1,0 +1,36 @@
+.button.blue{
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  color: #eee;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 15px;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  }
+
+  .button.red{
+    background-color: rgb(14, 212, 106);
+    border-radius: 12px;
+    border: 0;
+    color: #eee;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 15px;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    }
+
+
+  .button:hover,
+  .button:active {
+    background-color: #06b;
+  }
+
+  .button.red:hover,
+  .button.red:active {
+    background-color: rgb(16, 144, 95);
+  }
