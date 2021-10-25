@@ -30,24 +30,24 @@ const Product = (props) =>{
     return( 
         <div className={`${styles.container}`}> 
             <NewProduct getProducts={productGetter}></NewProduct>
-            <ul className={`${styles.responsiveTable}`}>
-                <li className={`${styles.tableHeader}`}>
-                    <div className={`${styles.col1}`}>Product Name</div>
-                    <div className={`${styles.col2}`}>Price</div>
-                    <div className={`${styles.col3}`}>Stock</div>
-                    <div className={`${styles.col4}`}>Status</div>
-                </li>
-                {products.map((product)=>{
-                return(
-                <li className={`${styles.tableRow}`} key={product.prod_id}>
-                    <div className={`${styles.col1}`}>{product.prod_name}</div>
-                    <div className={`${styles.col2}`}>{product.price}</div>
-                    <div className={`${styles.col3}`}>{10}</div>
-                    <div className={`${styles.col4}`}></div>
-                </li>
-                )
-                })}
-            </ul>
+                <ul className={`${styles.responsiveTable}`}>
+                    <li className={`${styles.tableHeader}`}>
+                        <div className={`${styles.col1}`}>Product Name</div>
+                        <div className={`${styles.col2}`}>Price</div>
+                        <div className={`${styles.col3}`}>Stock</div>
+                        <div className={`${styles.col4}`}>Status</div>
+                    </li>
+                    {products.map((product)=>{
+                    return(
+                    <li className={`${styles.tableRow}`} key={product.prod_id}>
+                        <div className={`${styles.col1}`}>{product.prod_name}</div>
+                        <div className={`${styles.col2}`}>{product.price}</div>
+                        <div className={`${styles.col3}`}>{10}</div>
+                        <div className={`${styles.col4}`}></div>
+                    </li>
+                    )
+                    })}
+                </ul>
         </div>
     )
 }
