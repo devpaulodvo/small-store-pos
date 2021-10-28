@@ -1,7 +1,13 @@
+.container{
+  width: 100%;
+  height: 5%;
+  display: inline-block;
+  background: #023042;
+  margin-bottom: 20px;
+}
+
 .nav {
     list-style-type: none;
-    padding: 1;
-    margin: 0;
     text-align: center;
   }
 
@@ -17,6 +23,6 @@
 }
 
 .nav li:hover {
-  color: #fddb3a;
+  color: #079ad4;
   cursor: pointer;
 }

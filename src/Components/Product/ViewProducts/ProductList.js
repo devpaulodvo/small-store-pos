@@ -1,45 +1,78 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
+import Axios from "axios";
 
 import ProductItem from "./ProductItem";
 import ProductFilter from "./ProductFilter";
+import Header from '../../Header/Header';
+import styles from './ProductList.module.css';
 
-const ProductList = ({product, inventory}) =>{
+const ProductList = () =>{
     const [searchProduct, setSearchProduct] = useState('');
 
-    const filteredProductArray = product.filter(product => product.prod_name.includes(searchProduct.toLowerCase()));
+    const [products, getProducts] = useState([]);
+
+    useEffect(()=>{
+        myfunction()
+        // Axios.get('http://localhost:3001/api/get').then((response)=>{
+        //     getProducts(response.data);
+        // })
+        // return function cleanup() {
+        //   };
+    },[]);
+
+    const myfunction = async () => {
+        let result = await Axios.get('http://localhost:3001/api/get')
+        getProducts(result.data);
+      }
+
+
+    const filteredProductArray = products.filter(product => product.prod_name.includes(searchProduct.toLowerCase()));
     
     const filteredProduct = (event) =>{
         setSearchProduct(event.target.value);
-        
         console.log(searchProduct);
+        
+        console.log(filteredProductArray);
     }
 
-    if(filteredProductArray.length === 0){
+    // if(filteredProductArray.length === 0){
+    //     return(
+    //         <div>
+    //             {filteredProductArray.length}
+    //             <ProductFilter filteredProduct={filteredProduct}/>
+    //             <p style={{textAlign: 'center'}}>Product Not Found!</p>
+    //         </div>
+    //     )
+    // }
+    // else{
+
+    
+
         return(
-            <div>
+            <React.Fragment>
+                <Header/>
                 <ProductFilter filteredProduct={filteredProduct}/>
-                <p style={{textAlign: 'center'}}>Product Not Found!</p>
-            </div>
-            
-        )
-    }
-    else{
-        
-        return(
-            <div>
-            <ProductFilter filteredProduct={filteredProduct}/>
-            <ul>{filteredProductArray.map((product) =>
-                <li style={{display: 'inline-block', marginRight: '5rem'}} key={product.id}>
-                    <ProductItem 
-                        productName={product.prod_name} 
-                        price={product.price} 
-                        stock={product.stock}/>
-                </li>
-            )}
-            </ul>
-            </div>
+                <ul>{filteredProductArray.map((product) =>
+                    <li style={{display: 'inline-block', marginRight: '5rem'}} key={product.prod_id}>
+                        {filteredProductArray.length > 0 ?
+                            (<ProductItem 
+                            productName={product.prod_name} 
+                            price={product.price}/>)
+                            : (<p style={{textAlign: 'center'}}>Product Not Found!</p>)
+                        }
+                    </li>
+                )}
+                
+                {filteredProductArray.length === 0 ?
+                            (<li style={{display: 'inline-block', marginRight: '5rem'}}>
+                                <p style={{textAlign: 'center'}}>Product Not Found!</p>
+                            </li>)
+                            : null
+                        }
+                </ul>
+            </React.Fragment>
         );
-    }
+    // }
    
 }
 

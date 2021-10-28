@@ -1,9 +1,11 @@
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { BrowserRouter as Router} from 'react-router-dom'; 
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
 
 // import Login from './Components/Login/Login';
 import { fnameUpdater, lnameUpdater, selectLname, selectFname } from './slices/userDetailsSlice';
+import ProductList from './Components/Product/ViewProducts/ProductList';
+import Login from './Components/Login/Login';
 import AdminDashboard from './Components/AdminDashboard/AdminDashboard';
 import React, { Fragment } from 'react';
 
@@ -20,9 +22,16 @@ function App() {
 
   return (
     <Router>
+      <Switch>
       <React.Fragment>
-        <AdminDashboard/>
+        <Route exact path="/login">
+          <Login/>
+        </Route>
+        <Route exact path={["/", "/baligya"]}>
+          <ProductList/>
+        </Route>
       </React.Fragment>
+      </Switch>
     </Router>
   );
 }

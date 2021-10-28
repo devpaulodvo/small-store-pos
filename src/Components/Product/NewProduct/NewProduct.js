@@ -30,13 +30,13 @@ const NewProduct = ({getProducts}) =>{
                             <input 
                                 type="text" 
                                 name="productName" 
-                                onChange={(event) => {setProductName(event.target.value)}}
+                                onChange={(event) => {setProductName(event.target.value.toLowerCase())}}
                             />
                             <label>Product Price</label>
                             <input 
                                 type="text"
                                 name="productPrice" 
-                                onChange={(event) => {setProductPrice(event.target.value)}}
+                                onChange={(event) => {setProductPrice(event.target.value.toLowerCase())}}
                             />
                             <Button onClick={addProduct}>Add Product</Button>
                         </form>

@@ -16,7 +16,7 @@ return(
             <Router>
             <NavBar/>
                 <Switch>
-                    <Route exact path="/">
+                    <Route exact path="/manage-product">
                         <Product/>
                     </Route>
                     <Route exact path="/manage-inventory">

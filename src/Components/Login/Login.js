@@ -3,12 +3,14 @@ import TextField from "../../UI/TextField/TextField";
 import Button from "../../UI/Button/Button";
 
 import styles from './Login.module.css';
+import Header from "../Header/Header";
 
 
 const Login = (props) =>{
 
     return(
         <div className={styles.div}>
+            <Header/>
             <h4 style={{textAlign: 'center'}}>Welcome to Verna Store. Please Login.</h4>
             <form className={styles.form}>
                 <TextField label="Username"/>
