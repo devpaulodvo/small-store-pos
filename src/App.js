@@ -27,6 +27,9 @@ function App() {
         <Route exact path="/login">
           <Login/>
         </Route>
+        <Route exact path={["/register"]}>
+          <ProductList/>
+        </Route>
         <Route exact path={["/", "/baligya"]}>
           <ProductList/>
         </Route>
