@@ -50,25 +50,21 @@ const ProductList = () =>{
 
         return(
             <React.Fragment>
-                <Header/>
                 <ProductFilter filteredProduct={filteredProduct}/>
-                <ul>{filteredProductArray.map((product) =>
-                    <li style={{display: 'inline-block', marginRight: '5rem'}} key={product.prod_id}>
-                        {filteredProductArray.length > 0 ?
-                            (<ProductItem 
-                            productName={product.prod_name} 
-                            price={product.price}/>)
-                            : (<p style={{textAlign: 'center'}}>Product Not Found!</p>)
-                        }
-                    </li>
-                )}
-                
-                {filteredProductArray.length === 0 ?
-                            (<li style={{display: 'inline-block', marginRight: '5rem'}}>
+                <ul>
+                    {filteredProductArray.length === 0 
+                            ? 
+                                (<li style={{display: 'inline-block', marginRight: '5rem'}}>
                                 <p style={{textAlign: 'center'}}>Product Not Found!</p>
-                            </li>)
-                            : null
-                        }
+                                </li>)
+                            : 
+                            filteredProductArray.map((product) =>
+                                <li style={{display: 'inline-block', marginRight: '5rem'}} key={product.prod_id}>
+                                <ProductItem 
+                                productName={product.prod_name} 
+                                price={product.price}/>
+                                </li>
+                    )}
                 </ul>
             </React.Fragment>
         );

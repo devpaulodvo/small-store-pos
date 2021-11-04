@@ -7,6 +7,8 @@ import { fnameUpdater, lnameUpdater, selectLname, selectFname } from './slices/u
 import ProductList from './Components/Product/ViewProducts/ProductList';
 import Login from './Components/Login/Login';
 import AdminDashboard from './Components/AdminDashboard/AdminDashboard';
+import Register from './Components/Register/Register';
+import Header from './Components/Header/Header';
 import React, { Fragment } from 'react';
 
 
@@ -24,8 +26,12 @@ function App() {
     <Router>
       <Switch>
       <React.Fragment>
+        <Header/>
         <Route exact path="/login">
           <Login/>
+        </Route>
+        <Route exact path={["/register"]}>
+          <Register/>
         </Route>
         <Route exact path={["/", "/baligya"]}>
           <ProductList/>

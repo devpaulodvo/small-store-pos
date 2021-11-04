@@ -9,7 +9,7 @@ const TextField = (props) => {
             value={props.value} 
             name={props.name} 
             className={`${styles.input} ${props.className}`} 
-            type={props.type || 'input'}/>
+            type={props.type}/>
         </div>
     );
 }
