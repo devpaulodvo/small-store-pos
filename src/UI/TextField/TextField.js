@@ -9,7 +9,9 @@ const TextField = (props) => {
             value={props.value} 
             name={props.name} 
             className={`${styles.input} ${props.className}`} 
-            type={props.type}/>
+            type={props.type}
+            onChange={props.onChange}
+            />
         </div>
     );
 }
