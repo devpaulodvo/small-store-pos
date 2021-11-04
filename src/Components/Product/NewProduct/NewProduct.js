@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Axios from "axios";
 
 
@@ -16,9 +16,9 @@ const NewProduct = ({getProducts}) =>{
             price: productPrice}).then(()=>{
                 alert("successful insert");
             });
-            Axios.get('http://localhost:3001/api/get').then((response)=>{
-                getProducts(response.data)
-            })
+        Axios.get('http://localhost:3001/api/get').then((response)=>{
+            getProducts(response.data)
+        })
     }
 
     return( 
