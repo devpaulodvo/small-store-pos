@@ -1,0 +1,16 @@
+.form {
+    background-color: #15172b;
+    border-radius: 10px;
+    height: auto;
+    padding: 10px 20px;
+    width: 400px;
+    display: inline-block;
+    text-align: left;
+    padding-bottom: 30px;
+  }
+
+.div {
+    display: block;
+    text-align: center;
+    margin-bottom: 50px;
+}

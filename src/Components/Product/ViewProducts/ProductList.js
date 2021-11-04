@@ -50,7 +50,6 @@ const ProductList = () =>{
 
         return(
             <React.Fragment>
-                <Header/>
                 <ProductFilter filteredProduct={filteredProduct}/>
                 <ul>
                     {filteredProductArray.length === 0 

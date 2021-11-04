@@ -4,6 +4,8 @@ const app = express()
 const mysql = require("mysql")
 const jwt = require("jsonwebtoken")
 
+const bcrypt = require('bcrypt' )
+
 const db = mysql.createPool({
     host: 'localhost',
     user: 'verna',
@@ -14,6 +16,16 @@ const db = mysql.createPool({
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
+
+app.post('/register', (res, req)=>{
+    const {username, password} = req.body;
+    bcrypt.hash(password, 10).then((hash)=>{
+        const sqlInsert = "INSERT INTO login (username, password, role) VALUES (?,?,'customer')";
+        db.query(sqlInsert, [username, hash], (err, result) => {
+            console.log("User Registered")
+        })
+    });
+})
 
 app.get('/api/get',(req,res)=>{
     const sqlSelect = "SELECT * FROM product";
