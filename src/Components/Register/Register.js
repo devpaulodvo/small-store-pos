@@ -13,6 +13,7 @@ const Register = (props) => {
                 <TextField label="Confirm Password" type="password"/>
                 <Button blue>Register</Button>
                 {/* <Button>Register</Button> */}
+                asdasdaas
             </form>
         </div>
     );
