@@ -13,12 +13,13 @@ const NewProduct = ({getProducts}) =>{
     const addProduct = () =>{
         Axios.post("http://localhost:3001/api/insert", {
             prod_name: productName, 
-            price: productPrice}).then(()=>{
+            price: productPrice
+        }).then(()=>{
                 alert("successful insert");
             });
-        Axios.get('http://localhost:3001/api/get').then((response)=>{
-            getProducts(response.data)
-        })
+        // Axios.get('http://localhost:3001/api/get').then((response)=>{
+        //     getProducts(response.data)
+        // })
     }
 
     return( 

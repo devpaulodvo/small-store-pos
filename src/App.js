@@ -10,6 +10,7 @@ import AdminDashboard from './Components/AdminDashboard/AdminDashboard';
 import Register from './Components/Register/Register';
 import Header from './Components/Header/Header';
 import React, { Fragment } from 'react';
+import NewProduct from './Components/Product/NewProduct/NewProduct';
 
 
 function App() {
@@ -35,6 +36,9 @@ function App() {
         </Route>
         <Route exact path={["/", "/baligya"]}>
           <ProductList/>
+        </Route>
+        <Route exact path={["/", "/Test"]}>
+          <NewProduct/>
         </Route>
       </React.Fragment>
       </Switch>

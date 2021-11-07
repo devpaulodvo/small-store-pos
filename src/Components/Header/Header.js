@@ -25,6 +25,12 @@ const Header = (props) =>{
             path: '/login',
             li: "Login",
         },
+        {
+            id_num:4,
+            id: "test",
+            path: '/test',
+            li: "Test",
+        },
     ]
 
     const manageNav = ({nav}) =>{

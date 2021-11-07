@@ -39,8 +39,8 @@ const Product = (props) =>{
                     </li>
                     {products.map((product)=>{
                     return(
-                    <li className={`${styles.tableRow}`} key={product.prod_id}>
-                        <div className={`${styles.col1}`}>{product.prod_name}</div>
+                    <li className={`${styles.tableRow}`} key={product.productId}>
+                        <div className={`${styles.col1}`}>{product.productName}</div>
                         <div className={`${styles.col2}`}>{product.price}</div>
                         <div className={`${styles.col3}`}>{10}</div>
                         <div className={`${styles.col4}`}></div>

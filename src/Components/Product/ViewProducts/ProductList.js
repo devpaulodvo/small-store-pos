@@ -26,7 +26,7 @@ const ProductList = () =>{
       }
 
 
-    const filteredProductArray = products.filter(product => product.prod_name.includes(searchProduct.toLowerCase()));
+    const filteredProductArray = products.filter(product => product.productName.includes(searchProduct.toLowerCase()));
     
     const filteredProduct = (event) =>{
         setSearchProduct(event.target.value);
@@ -59,9 +59,9 @@ const ProductList = () =>{
                                 </li>)
                             : 
                             filteredProductArray.map((product) =>
-                                <li style={{display: 'inline-block', marginRight: '5rem'}} key={product.prod_id}>
+                                <li style={{display: 'inline-block', marginRight: '5rem'}} key={product.productId}>
                                 <ProductItem 
-                                productName={product.prod_name} 
+                                productName={product.productName} 
                                 price={product.price}/>
                                 </li>
                     )}
