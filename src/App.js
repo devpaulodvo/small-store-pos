@@ -1,50 +1,44 @@
 import './App.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
-
-// import Login from './Components/Login/Login';
-import { fnameUpdater, lnameUpdater, selectLname, selectFname } from './slices/userDetailsSlice';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Axios from "axios";
 import ProductList from './Components/Product/ViewProducts/ProductList';
 import Login from './Components/Login/Login';
-import AdminDashboard from './Components/AdminDashboard/AdminDashboard';
 import Register from './Components/Register/Register';
-import Header from './Components/Header/Header';
-import React, { Fragment } from 'react';
-import NewProduct from './Components/Product/NewProduct/NewProduct';
+import React, { useEffect }  from 'react';
+import AdminDashboard from './Components/AdminDashboard/AdminDashboard';
+import ProtectedRoute from './Components/Route/ProtectedRoute';
+import { useSelector, useDispatch} from 'react-redux'
+import { authUpdater, selectAuth } from "./slices/userDetailsSlice";
 
 
 function App() {
-  const userDetail = {
-    fn: useSelector(selectFname),
-    ln: useSelector(selectLname),
-  };
-  
+  const isAuth = useSelector(selectAuth);
+  const dispatch = useDispatch();
 
-  // console.log(userDetail.fn);
-  // console.log(userDetail.ln);
+  useEffect( async () => {
+    const token = localStorage.getItem("token");
+    if(token !== null){
+      let result = await Axios.get("http://localhost:3001/isUserAuth", 
+      {headers: {"x-access-token": localStorage.getItem("token")}});
+      console.log(result)
+      dispatch(authUpdater(result.data))
+    }
+    
+  },[])
 
   return (
-    <Router>
-      <Switch>
-      <React.Fragment>
-        <Header/>
-        <Route exact path="/login">
-          <Login/>
-        </Route>
-        <Route exact path={["/register"]}>
-          <Register/>
-        </Route>
-        <Route exact path={["/", "/baligya"]}>
-          <ProductList/>
-        </Route>
-        <Route exact path={["/", "/Test"]}>
-          <NewProduct/>
-        </Route>
-      </React.Fragment>
-      </Switch>
-    </Router>
+      <Router>
+        <Switch>
+          <React.Fragment>
+              <Route path={["/login"]} component={Login}/>
+              <Route exact path={["/register"]} component={Register}/>
+              <Route exact path={["/", "/baligya"]} component={ProductList}/>
+              <ProtectedRoute path={["/dashboard"]} pathname={'/login'} component={AdminDashboard} isAuth={isAuth}/>
+          </React.Fragment>
+        </Switch>
+      </Router>
   );
-}
+ }
 
 export default App;
 

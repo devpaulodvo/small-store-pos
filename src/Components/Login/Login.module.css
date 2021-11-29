@@ -7,6 +7,7 @@
     display: inline-block;
     text-align: left;
     padding-bottom: 30px;
+    color: red;
   }
 
 .div {
@@ -14,3 +15,21 @@
     text-align: center;
     margin-bottom: 50px;
 }
+.label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color:#ffffff;
+}
+.button{
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  color: #eee;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 15px;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  }

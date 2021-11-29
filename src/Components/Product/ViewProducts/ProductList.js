@@ -30,9 +30,6 @@ const ProductList = () =>{
     
     const filteredProduct = (event) =>{
         setSearchProduct(event.target.value);
-        console.log(searchProduct);
-        
-        console.log(filteredProductArray);
     }
 
     // if(filteredProductArray.length === 0){
@@ -50,6 +47,7 @@ const ProductList = () =>{
 
         return(
             <React.Fragment>
+                <Header/>
                 <ProductFilter filteredProduct={filteredProduct}/>
                 <ul>
                     {filteredProductArray.length === 0 

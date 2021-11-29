@@ -3,22 +3,27 @@ import { createSlice } from "@reduxjs/toolkit";
 export const slice = createSlice({
     name:'userdetails',
     initialState:{
-        fname: 'admin',
-        lname: 'admin',
+        auth: false,
+        username: '',
+        userid: 0,
     },
     reducers:{
-        fnameUpdater: (state, action)=>{
-            state.fname = action.payload;
+        authUpdater: (state, action)=>{
+            state.auth = action.payload;
         },
-        lnameUpdater: (state, action)=>{
-            state.lname = action.payload;
+        usernameUpdater: (state, action)=>{
+            state.username = action.payload;
+        },
+        userIdUpdater: (state, action)=>{
+            state.userid = action.payload;
         },
     }
 });
 
-export const {fnameUpdater, lnameUpdater} = slice.actions;
+export const {authUpdater, usernameUpdater, userIdUpdater} = slice.actions;
 
-export const selectFname = state => state.userdetails.fname;
-export const selectLname = state => state.userdetails.lname;
+export const selectAuth = state => state.userdetails.auth;
+export const selectUsername = state => state.userdetails.username;
+export const selectUserId = state => state.userdetails.userid;
 
 export default slice.reducer;

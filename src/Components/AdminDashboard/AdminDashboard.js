@@ -1,37 +1,72 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
+import {Route, Switch, useRouteMatch, Link } from 'react-router-dom'; 
 
-import Product from "../Product/Product";
+import NewProduct from "../Product/NewProduct/NewProduct";
+import UpdateProduct from "../Product/UpdateProduct/UpdateProduct"
 import Inventory from "../Inventory/Inventory";
 import Payment from "../Payment/Payment";
 import Account from "../Account/Account";
 import NavBar from "../../UI/NavBar/NavBar";
+import ManageProductMenu from "../Product/ManageProductMenu";
 
 import styles from './AdminDashboard.module.css';
+import { withRouter } from "react-router";
 
 const AdminDashboard = (props) =>{
+    let { path, url } = useRouteMatch();
+    const navbar = [
+        {
+            id_num:1,
+            id: "manage-products",
+            path: '/manage-products',
+            li: "Manage Products",
+        },
+        {
+            id_num:2,
+            id: "manage-inventory",
+            path: '/manage-inventory',
+            li: "Manage Inventory",
+        },
+        {
+            id_num:3,
+            id: "manage-payments",
+            path: '/manage-payments',
+            li: "Manage Payments",
+        },
+        {
+            id_num:4,
+            id: "manage-accounts",
+            path: '/manage-accounts',
+            li: "Manage Accounts",
+        },
+    ]
 
 return(   
+
             <div className={`${styles.container}`}>
-            <Router>
-            <NavBar/>
+                <NavBar/>
                 <Switch>
-                    <Route exact path="/manage-product">
-                        <Product/>
+                    <Route exact path={["/dashboard", "/dashboard/manage-products"]}>
+                        <ManageProductMenu/>
                     </Route>
-                    <Route exact path="/manage-inventory">
+                    <Route exact path={["/dashboard/manage-products/add-product", "/dashboard/add-product"]}>
+                        <NewProduct></NewProduct>
+                    </Route>
+                    <Route exact path={["/dashboard/manage-products/update-product", "/dashboard/update-product"]}>
+                        <UpdateProduct/>
+                    </Route>
+                    <Route path={["/dashboard/manage-inventory"]}>
                         <Inventory/>
                     </Route>
-                    <Route exact path="/manage-payments">
+                    <Route exact path="/dashboard/manage-payments">
                         <Payment/>
                     </Route>
-                    <Route exact path="/manage-accounts">
+                    <Route exact path="/dashboard/manage-accounts">
                         <Account/>
                     </Route>
                 </Switch>
-            </Router>
             </div>
 )
 }
 
-export default AdminDashboard;
+export default withRouter(AdminDashboard);

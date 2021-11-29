@@ -7,10 +7,52 @@
     display: inline-block;
     text-align: left;
     padding-bottom: 30px;
+    color: red;
   }
 
 .div {
     display: block;
     text-align: center;
     margin-bottom: 50px;
+}
+
+input {
+  background-color: #ffffff;
+  border-radius: 7px;
+  box-sizing: border-box;
+  color: rgb(29, 29, 29);
+  font-size: 18px;
+  height: 50px;
+  width: 100%;
+}
+
+.label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color:#ffffff;
+}
+.button{
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  color: #eee;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 15px;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  }
+
+.button:hover,
+.button:active {
+  background-color: #06b;
+}
+
+.label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color:#ffffff;
 }

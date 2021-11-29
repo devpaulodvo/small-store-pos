@@ -1,17 +1,15 @@
-
 .search {
-  width: 50%;
-  position: relative;
+  margin-top: 15px;
+  width: 30%;
   display: flexbox;
   height: 36px;
+  border-color:rgb(151, 151, 151);
+  border-radius: 0%;
 }
-
 
 /*Resize the wrap to see the search bar change!*/
 .wrap{
-  width: 90%;
-  top: 50%;
-  left: 50%;
+  width: 100%;
   display: block;
   text-align: center;
 }

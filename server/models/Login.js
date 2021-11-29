@@ -14,7 +14,28 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
       // allowNull defaults to true
-    }
+    },
+    fn: {
+      type: DataTypes.STRING,
+      allowNull: false
+      // allowNull defaults to true
+    },
+    mn: {
+      type: DataTypes.STRING,
+      allowNull: false
+      // allowNull defaults to true
+    },
+    ln: {
+      type: DataTypes.STRING,
+      allowNull: false
+      // allowNull defaults to true
+    },
+    ROLE: {
+      type: DataTypes.STRING,
+      allowNull: false
+      // allowNull defaults to true
+    },
+    
   }, {
     // Other model options go here
   });

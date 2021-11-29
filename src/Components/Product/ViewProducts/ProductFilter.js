@@ -10,7 +10,7 @@ const ProductFilter = ({filteredProduct}) =>{
 
     return(
         <div className={`${styles.wrap}`}>
-                <input id="search" className={`${styles.search}`} placeholder="Search..."
+                <input type="text" id="search" className={`${styles.search}`} placeholder="Search..."
                 onChange={(event) => productFilter(event)}/>
         </div>
     );
