@@ -44,7 +44,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({extended: true}))
 
 
-db.sequelize.sync().then((result) => {
+db.sequelize.sync({ alter: true }).then((result) => {
     app.listen(3001, ()=>{
       console.log('test');
   });
@@ -52,13 +52,38 @@ db.sequelize.sync().then((result) => {
     console.log(err);
   });
 
+app.post('/selectuser', async (req, res)=>{
+  const userid = req.body.userid
+  
+  let user =  await Login.findOne({
+    where: {
+      userid: userid
+    }
+  })
+
+  res.json(user);
+  
+
+})
 
 app.get('/api/get',(req,res)=>{
-    Product.findAll().then((products) => {
+    Product.findAll({
+      where: {
+        stat: 'active'
+      }
+    }).then((products) => {
       res.send(products)
     }).catch((err) => {
       console.log(err);
     })
+});
+
+app.get('/api/getall',(req,res)=>{
+  Product.findAll().then((products) => {
+    res.send(products)
+  }).catch((err) => {
+    console.log(err);
+  })
 });
 // app.post('/checkproduct')
 
@@ -75,6 +100,56 @@ app.post('/api/insert', verifyJWT, (req,res)=>{
       }
     });
   });
+
+  app.post('/updateproduct', async (req, res)=>{
+    const productName = req.body.productName;
+    const price = req.body.price;
+    const productId = req.body.productId;
+    
+    try{
+      Product.update({ productName: productName, price: price }, {
+        where: {
+          productId: productId
+        }
+      });
+      res.json({message: "Product Updated!"})
+    }catch(err){
+      res.json({message: "Error! Check your input."})
+      console.log(err);
+    }
+    
+  });
+
+  app.post('/updateproductstatus', async (req, res) => {
+    const productId = req.body.productId;
+    try{
+      Product.update({stat: 'notactive'},{
+        where:{
+          productId: productId
+        }
+      });
+      res.json({message:"Product Deactivated!"})
+    }
+    catch(err){
+      console.log(err);
+    }
+  })
+
+  app.post('/updateproductstatus2', async (req, res) => {
+    const productId = req.body.productId;
+    try{
+      Product.update({stat: 'active'},{
+        where:{
+          productId: productId
+        }
+      });
+      res.json({message:"Product Activated!"})
+    }
+    catch(err){
+      console.log(err);
+    }
+  })
+  
 
 
 

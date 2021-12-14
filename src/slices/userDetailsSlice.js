@@ -18,7 +18,10 @@ export const slice = createSlice({
             state.userid = action.payload;
         },
     }
-});
+,}
+
+);
+
 
 export const {authUpdater, usernameUpdater, userIdUpdater} = slice.actions;
 

@@ -1,0 +1,24 @@
+.container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: fixed;
+    margin-top: 20px;
+    margin-right: 35px;
+    top: 0;
+    right: 0;
+    background-color: rgb(218, 218, 218);
+}
+
+.cart {
+    width: 60%;
+    height: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+}
+
+.container:hover {
+    cursor: pointer;
+}

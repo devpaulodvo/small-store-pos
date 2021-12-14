@@ -1,23 +1,26 @@
 import React, {useEffect, useState} from "react";
 import Axios from "axios";
+import { useSelector, useDispatch } from 'react-redux'
+import { selectUserId } from "../../../slices/cartDetailsSlice";
+import { useridUpdater } from "../../../slices/cartDetailsSlice";
+
 
 import ProductItem from "./ProductItem";
 import ProductFilter from "./ProductFilter";
 import Header from '../../Header/Header';
-import styles from './ProductList.module.css';
+import ViewCart from "../../Cart/ViewCart";
+import EnterCustomer from "./EnterCustomer/EnterCustomer";
 
 const ProductList = () =>{
-    const [searchProduct, setSearchProduct] = useState('');
+    const dispatch = useDispatch();
+    const userIdSelector = useSelector(selectUserId);
 
+    const [searchProduct, setSearchProduct] = useState('');
+    const [customer, setCustomer] = useState({});
     const [products, getProducts] = useState([]);
 
     useEffect(()=>{
         myfunction()
-        // Axios.get('http://localhost:3001/api/get').then((response)=>{
-        //     getProducts(response.data);
-        // })
-        // return function cleanup() {
-        //   };
     },[]);
 
     const myfunction = async () => {
@@ -25,29 +28,37 @@ const ProductList = () =>{
         getProducts(result.data);
       }
 
-
     const filteredProductArray = products.filter(product => product.productName.includes(searchProduct.toLowerCase()));
     
     const filteredProduct = (event) =>{
         setSearchProduct(event.target.value);
     }
 
-    // if(filteredProductArray.length === 0){
-    //     return(
-    //         <div>
-    //             {filteredProductArray.length}
-    //             <ProductFilter filteredProduct={filteredProduct}/>
-    //             <p style={{textAlign: 'center'}}>Product Not Found!</p>
-    //         </div>
-    //     )
-    // }
-    // else{
+    const userIdGetter = async (object) => {
+        let result = await Axios.post("http://localhost:3001/selectuser", {
+                            userid: object
+                        });
 
-    
+        if(result.data === null){
+            window.alert("User Not Found!");
+        }
+        else{
+            dispatch(useridUpdater(result.data.userid));
+            
+                
+        }
+    }
 
-        return(
-            <React.Fragment>
-                <Header/>
+    return(
+        <React.Fragment>
+            <Header/>
+            {!userIdSelector ? 
+            (<div>
+                <EnterCustomer userIdGetter={userIdGetter}/>    
+            </div>) : 
+            <div>
+                <ViewCart/>
+                <h1>Customer Name</h1>
                 <ProductFilter filteredProduct={filteredProduct}/>
                 <ul>
                     {filteredProductArray.length === 0 
@@ -64,8 +75,10 @@ const ProductList = () =>{
                                 </li>
                     )}
                 </ul>
-            </React.Fragment>
-        );
+            </div>
+            }
+        </React.Fragment>
+    );
     // }
    
 }

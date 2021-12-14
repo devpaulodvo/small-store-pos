@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { AddProductSchema } from "../../../Schemas/Schema";
 
 import styles from './NewProduct.module.css';
+import ManageProductMenu from "../ManageProductMenu";
 
 const NewProduct = () =>{
     const history = useHistory();
@@ -13,7 +14,7 @@ const NewProduct = () =>{
 
     const addProduct = async () =>{
          let result = await  Axios.post("http://localhost:3001/api/insert", {
-            productName: productName,
+            productName: productName.toLowerCase(),
             price: productPrice
         },{headers: {"x-access-token": localStorage.getItem("token")}});
     }
@@ -23,7 +24,7 @@ const NewProduct = () =>{
     }
 
     return( 
-        <div className={`${styles.container}`}> 
+        <div className={`${styles.container}`}>
             <div className={styles.center}>
                 <h1 className={styles.h1}>Add Product</h1>
                 <Formik
@@ -45,7 +46,7 @@ const NewProduct = () =>{
                     {({isSubmitting, errors, touched})=>(
                     <Form>
                         <label className={styles.label}>Product Name</label>
-                        <Field onKeyUp={(event) => {setProductName(event.target.value.toLowerCase())}} type="text" name="productName" className={`${styles.input}`}/>
+                        <Field onKeyUp={(event) => {setProductName(event.target.value)}} type="text" name="productName" className={`${styles.input}`}/>
                         {
                         errors.productName && touched.productName ? (<div className={styles.error}>{errors.productName}</div>) : null
                         }

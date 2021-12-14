@@ -7,10 +7,10 @@ const ManageProductMenu = () =>{
     let { path, url } = useRouteMatch();
     return(
         <div className={`${styles.container}`}>
-            <ul>
-                <li><Link to={`${url}/add-product`}>Add Product</Link></li>
-                <li><Link to={`${url}/update-product`}>Update Product</Link></li>
-                <li>Delete Product</li>
+            <ul className={`${styles.nav}`}>
+                <Link className={`${styles.li}`} to={`${url}/add-product`}>Add Product</Link>
+                <Link className={`${styles.li}`} to={`${url}/update-product`}>Update Product</Link>
+                <Link className={`${styles.li}`} to={`${url}/delete-product`}>Delete Product</Link>
             </ul>
         </div>
     )

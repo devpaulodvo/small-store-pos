@@ -8,40 +8,11 @@ const NavBar = (props) => {
 
     let { path, url } = useRouteMatch();
 
-    const navbar = [
-        {
-            id_num:1,
-            id: "manage-products",
-            path: '/manage-product',
-            li: "Manage Products",
-        },
-        {
-            id_num:2,
-            id: "manage-inventory",
-            path: '/manage-inventory',
-            li: "Manage Inventory",
-        },
-        {
-            id_num:3,
-            id: "manage-payments",
-            path: '/manage-payments',
-            li: "Manage Payments",
-        },
-        {
-            id_num:4,
-            id: "manage-accounts",
-            path: '/manage-accounts',
-            li: "Manage Accounts",
-        },
-    ]
-
     // const history = useHistory();
 
     useEffect(() => {
         if(window.location.pathname === '/dashboard'){
             document.getElementById('manage-products').classList.add(`${styles.active}`)
-        }else if(window.location.pathname.includes('/manage-inventory')){
-            document.getElementById('manage-inventory').classList.add(`${styles.active}`)
         }else if(window.location.pathname.includes('/manage-payments')){
             document.getElementById('manage-payments').classList.add(`${styles.active}`)
         }else if(window.location.pathname.includes('/manage-accounts')){
@@ -84,13 +55,7 @@ const NavBar = (props) => {
                              </li>
                        </ul>   */}
                     </Link>
-                    <Link  
-                    id='manage-inventory' 
-                    className={`${styles.li} menu-item`}
-                    onClick={(event) => manageNav({event})} 
-                    to={`${url}/manage-inventory`}> 
-                        Manage Inventory
-                    </Link>
+                    
                     <Link  
                     id='manage-payments' 
                     className={`${styles.li} menu-item`}

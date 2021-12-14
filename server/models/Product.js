@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DOUBLE,
       allowNull: false
       // allowNull defaults to true
+    },
+    stat: {
+      type: DataTypes.STRING,
+      allowNull: false
+      // allowNull defaults to true
     }
   }, {
     // Other model options go here

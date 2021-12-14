@@ -2,8 +2,30 @@
     position: inherit;
     width: 90%;
     height: 100%;
-    background-color: #ffffff;
     display: inline-block;
     color: black;
     margin-left: 10%;
+    background-color: #023042;
+    
+}
+
+.nav {
+    list-style-type: none;
+    text-align: center;
+  }
+
+.li{
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline;
+    margin-right: 50px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.li:hover {
+  color: #079ad4;
+  cursor: pointer;
 }

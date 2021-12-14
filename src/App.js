@@ -32,7 +32,7 @@ function App() {
           <React.Fragment>
               <Route path={["/login"]} component={Login}/>
               <Route exact path={["/register"]} component={Register}/>
-              <Route exact path={["/", "/baligya"]} component={ProductList}/>
+              <Route exact path={["/", "/store"]} component={ProductList}/>
               <ProtectedRoute path={["/dashboard"]} pathname={'/login'} component={AdminDashboard} isAuth={isAuth}/>
           </React.Fragment>
         </Switch>

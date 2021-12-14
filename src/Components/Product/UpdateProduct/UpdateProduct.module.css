@@ -1,7 +1,8 @@
 .container{
     position: static;
-    width: 100%;
+    width: 90%;
     height: 100%;
+    margin-left:10%;
     background-color: #ececec;
     display: inline-block;
     color: black;

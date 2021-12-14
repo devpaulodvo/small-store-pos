@@ -11,6 +11,7 @@ import ManageProductMenu from "../Product/ManageProductMenu";
 
 import styles from './AdminDashboard.module.css';
 import { withRouter } from "react-router";
+import DeleteProduct from "../Product/DeleteProduct/DeleteProduct";
 
 const AdminDashboard = (props) =>{
     let { path, url } = useRouteMatch();
@@ -49,15 +50,15 @@ return(
                     <Route exact path={["/dashboard", "/dashboard/manage-products"]}>
                         <ManageProductMenu/>
                     </Route>
-                    <Route exact path={["/dashboard/manage-products/add-product", "/dashboard/add-product"]}>
-                        <NewProduct></NewProduct>
-                    </Route>
-                    <Route exact path={["/dashboard/manage-products/update-product", "/dashboard/update-product"]}>
-                        <UpdateProduct/>
-                    </Route>
-                    <Route path={["/dashboard/manage-inventory"]}>
-                        <Inventory/>
-                    </Route>
+                        <Route exact path={["/dashboard/manage-products/add-product", "/dashboard/add-product"]}>
+                            <NewProduct></NewProduct>
+                        </Route>
+                        <Route exact path={["/dashboard/manage-products/update-product", "/dashboard/update-product"]}>
+                            <UpdateProduct/>
+                        </Route>
+                        <Route exact path={["/dashboard/manage-products/delete-product", "/dashboard/delete-product"]}>
+                             <Inventory/>
+                        </Route>
                     <Route exact path="/dashboard/manage-payments">
                         <Payment/>
                     </Route>
