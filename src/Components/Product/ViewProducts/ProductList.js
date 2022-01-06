@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectUserId } from "../../../slices/cartDetailsSlice";
 import { useridUpdater } from "../../../slices/cartDetailsSlice";
 
-
+import styles from './ProductList.module.css';
 import ProductItem from "./ProductItem";
 import ProductFilter from "./ProductFilter";
 import Header from '../../Header/Header';
@@ -21,6 +21,7 @@ const ProductList = () =>{
 
     useEffect(()=>{
         myfunction()
+        
     },[]);
 
     const myfunction = async () => {
@@ -38,27 +39,30 @@ const ProductList = () =>{
         let result = await Axios.post("http://localhost:3001/selectuser", {
                             userid: object
                         });
-
+        
         if(result.data === null){
             window.alert("User Not Found!");
         }
         else{
-            dispatch(useridUpdater(result.data.userid));
-            
-                
+            dispatch(useridUpdater(result.data));
+
+            console.log(userIdSelector)
+        
         }
+
+        
     }
 
     return(
         <React.Fragment>
             <Header/>
-            {!userIdSelector ? 
+            {!userIdSelector.userid ? 
             (<div>
                 <EnterCustomer userIdGetter={userIdGetter}/>    
             </div>) : 
             <div>
                 <ViewCart/>
-                <h1>Customer Name</h1>
+                <h1 className={`${styles.h1}`}>{userIdSelector.fn} {userIdSelector.ln}</h1>
                 <ProductFilter filteredProduct={filteredProduct}/>
                 <ul>
                     {filteredProductArray.length === 0 

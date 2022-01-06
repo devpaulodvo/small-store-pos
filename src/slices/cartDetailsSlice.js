@@ -4,7 +4,7 @@ export const cartSlice = createSlice({
     name:'cartdetails',
     initialState:{
         orders: {},
-        userid: null,
+        userid: {},
     },
     reducers:{
         orderUpdater: (state, action)=>{
