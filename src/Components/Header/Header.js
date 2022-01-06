@@ -9,9 +9,9 @@ const Header = (props) =>{
     const navBar = [
         {
             id_num:1,
-            id: "baligya",
-            path: '/baligya',
-            li: "Baligya",
+            id: "store",
+            path: '/store',
+            li: "Store",
         },
         {
             id_num:2,

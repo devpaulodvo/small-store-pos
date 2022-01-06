@@ -11,6 +11,7 @@ const TextField = (props) => {
             className={`${styles.input} ${props.className}`} 
             type={props.type}
             onChange={props.onChange}
+            onKeyDown={props.onKeyDown}
             />
         </div>
     );

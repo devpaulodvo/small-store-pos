@@ -1,48 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Switch, useRouteMatch } from 'react-router-dom'; 
 
 import styles from './NavBar.module.css';
 
 const NavBar = (props) => {
 
-    const navbar = [
-        {
-            id_num:1,
-            id: "manage-products",
-            path: '/',
-            li: "Manage Products",
-        },
-        {
-            id_num:2,
-            id: "manage-inventory",
-            path: '/manage-inventory',
-            li: "Manage Inventory",
-        },
-        {
-            id_num:3,
-            id: "manage-payments",
-            path: '/manage-payments',
-            li: "Manage Payments",
-        },
-        {
-            id_num:4,
-            id: "manage-accounts",
-            path: '/manage-accounts',
-            li: "Manage Accounts",
-        },
-    ]
+    let { path, url } = useRouteMatch();
 
-    const history = useHistory();
+    // const history = useHistory();
 
     useEffect(() => {
-        if(window.location.pathname === '/'){
+        if(window.location.pathname === '/dashboard'){
             document.getElementById('manage-products').classList.add(`${styles.active}`)
-        }else if(window.location.pathname.includes('/manage-inventory')){
-            document.getElementById('manage-inventory').classList.add(`${styles.active}`)
         }else if(window.location.pathname.includes('/manage-payments')){
             document.getElementById('manage-payments').classList.add(`${styles.active}`)
         }else if(window.location.pathname.includes('/manage-accounts')){
             document.getElementById('manage-accounts').classList.add(`${styles.active}`)
+        }else if(window.location.pathname.includes('/manage-products')){
+            document.getElementById('manage-products').classList.add(`${styles.active}`)
         }
     },[])
 
@@ -56,19 +32,49 @@ const NavBar = (props) => {
 
     const manageNav = ({event, nav}) =>{
         clearActive(event);
-            history.push(nav.path);
+        // history.push(nav.path);
     }
 
     return(
             <ul className={`${styles.sidenav}`}>
-                {navbar.map((nav)=>
-                    <li className={`${styles.li} menu-item`} onClick={(event) => manageNav({event, nav})} id={nav.id} key={nav.id_num}>
-                    {nav.li}
-                    </li>
-                )}
+                    <Link  
+                    id='manage-products' 
+                    className={`${styles.li} menu-item`}
+                    onClick={(event) => manageNav({event})} 
+                    to={`${url}/manage-products`}> 
+                        Manage Products
+                        {/* <ul className={`${styles.childnav}`}>
+                             <li>
+                                 <Link to={`${url}/add-product`}>Add Product</Link>
+                             </li>
+                             <li>
+                                 <Link to={`${url}/update-product`}>Update Product</Link>
+                             </li>
+                             <li>
+                                 <Link to={`${url}/delete-product`}>Delete Product</Link>
+                             </li>
+                       </ul>   */}
+                    </Link>
                     
+                    <Link  
+                    id='manage-payments' 
+                    className={`${styles.li} menu-item`}
+                    onClick={(event) => manageNav({event})} 
+                    to={`${url}/manage-payments`}> 
+                        Manage Payments
+                    </Link>
+                    <Link  
+                    id='manage-accounts' 
+                    className={`${styles.li} menu-item`}
+                    onClick={(event) => manageNav({event})} 
+                    to={`${url}/manage-accounts`}> 
+                        Manage Accounts
+                    </Link>
+               
             </ul>
     );
 }
+
+
 
 export default NavBar;

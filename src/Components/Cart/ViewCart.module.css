@@ -1,0 +1,72 @@
+.container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: fixed;
+    margin-top: 20px;
+    margin-right: 35px;
+    top: 0;
+    right: 0;
+    background-color: rgb(218, 218, 218);
+}
+
+.cart {
+    width: 60%;
+    height: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+}
+
+.container:hover {
+    cursor: pointer;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+    position: fixed;
+    display: block;
+    z-index: 2;
+}
+
+.viewcart {
+    width: 30%;
+    height: 30%;
+    display: block;
+    background-color: blanchedalmond;
+    margin: auto;
+    margin-top: 10%;
+}
+
+.close {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+  }
+  .close:hover {
+    opacity: 1;
+  }
+  .close:before, .close:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #333;
+  }
+  .close:before {
+    transform: rotate(45deg);
+  }
+  .close:after {
+    transform: rotate(-45deg);
+  }

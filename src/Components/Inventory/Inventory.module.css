@@ -5,6 +5,7 @@
     background-color: #ffffff;
     display: inline-block;
     color: black;
+    margin-left: 10%;
 }
 .active{
     top: 0;
@@ -14,3 +15,46 @@
     cursor: pointer;
     text-decoration:none;
 }
+.productContainer{
+  position: static;
+  background-color: #ffffff;
+  color: black;
+}
+.responsiveTable{
+      list-style-type:none;
+      position: static;
+      border-radius: 3px;
+      padding: 0;
+}
+.responsiveTable li{
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.tableHeader {
+    background-color: #95A5A6;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-weight: bold;
+  }
+
+  .tableRow {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+  }
+
+  .col1 {
+    flex-basis: 25%;
+  }
+  .col2 {
+    flex-basis: 25%;
+  }
+  .col3 {
+    flex-basis: 25%;
+  }
+  .col4 {
+    flex-basis: 25%;
+  }
