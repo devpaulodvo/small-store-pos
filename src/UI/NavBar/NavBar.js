@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 // import { useHistory } from "react-router-dom";
 import { BrowserRouter as Router, Link, Route, Switch, useRouteMatch } from 'react-router-dom'; 
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import styles from './NavBar.module.css';
 
 const NavBar = (props) => {
-
     let { path, url } = useRouteMatch();
-
-    // const history = useHistory();
 
     useEffect(() => {
         if(window.location.pathname === '/dashboard'){
@@ -20,6 +18,7 @@ const NavBar = (props) => {
         }else if(window.location.pathname.includes('/manage-products')){
             document.getElementById('manage-products').classList.add(`${styles.active}`)
         }
+        
     },[])
 
     const clearActive = (event) =>{
@@ -32,7 +31,11 @@ const NavBar = (props) => {
 
     const manageNav = ({event, nav}) =>{
         clearActive(event);
-        // history.push(nav.path);
+    }
+
+    const logout = () =>{
+        localStorage.removeItem('token');
+        window.location.reload();
     }
 
     return(
@@ -43,19 +46,7 @@ const NavBar = (props) => {
                     onClick={(event) => manageNav({event})} 
                     to={`${url}/manage-products`}> 
                         Manage Products
-                        {/* <ul className={`${styles.childnav}`}>
-                             <li>
-                                 <Link to={`${url}/add-product`}>Add Product</Link>
-                             </li>
-                             <li>
-                                 <Link to={`${url}/update-product`}>Update Product</Link>
-                             </li>
-                             <li>
-                                 <Link to={`${url}/delete-product`}>Delete Product</Link>
-                             </li>
-                       </ul>   */}
                     </Link>
-                    
                     <Link  
                     id='manage-payments' 
                     className={`${styles.li} menu-item`}
@@ -70,6 +61,12 @@ const NavBar = (props) => {
                     to={`${url}/manage-accounts`}> 
                         Manage Accounts
                     </Link>
+                    <div
+                    id='logout'
+                    className={`${styles.li} menu-item`}
+                    onClick={() => {logout()}}>
+                       Logout
+                    </div>
                
             </ul>
     );

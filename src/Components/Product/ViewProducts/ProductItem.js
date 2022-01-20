@@ -1,20 +1,39 @@
 import React, { useState } from "react";
-
+import { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux'
+import { orderUpdater } from "../../../slices/cartDetailsSlice";
+import { selectOrders } from "../../../slices/cartDetailsSlice";
+import { totalCal } from "../../../slices/cartDetailsSlice";
 import Button from '../../../UI/Button/Button';
 import styles from './ProductItem.module.css';
 
-const ProductItem = ({productName, price, stock, inventory}) =>{
-    const [countProduct, setCountProduct] = useState(0);
+const ProductItem = ({productId, productName, price, inventory}) =>{
+    const dispatch = useDispatch();
+    const orderSelector = useSelector(selectOrders);
+    const [countProduct, setCountProduct] = useState(1);
+
+    const [index, setOrderSelectorLength] = useState(0);
+
+    let productArray = {index, productId, productName, price, countProduct}
+
+    useEffect(()=>{
+        setOrderSelectorLength(orderSelector.length)
+    },[orderSelector]);
 
     const incrementCount = () =>{
         setCountProduct(countProduct + 1);
     }
     
     const decrementCount = () =>{
-        if(countProduct >> 0){
+        if(countProduct >> 1){
             setCountProduct(countProduct - 1);
         }
         
+    }
+
+    const addToCart = (price, countProduct) => {
+        dispatch(orderUpdater(productArray));
+        dispatch(totalCal(price*countProduct));
     }
 
     if(inventory===true){
@@ -40,11 +59,9 @@ const ProductItem = ({productName, price, stock, inventory}) =>{
                 <div className={`${styles.productleft}`}>
                 <div className={`${styles.header}`}>
                     <h1>{productName}</h1>
-                    <h2>Remaining: {stock}</h2>
                 </div>
                 <div className={`${styles.productdetails}`}>
                     <div className={`${styles.producttotal}`}>
-                    <h3>Price</h3>
                     <p>P{price}</p>
                     </div>
                 </div>
@@ -55,7 +72,7 @@ const ProductItem = ({productName, price, stock, inventory}) =>{
                 </div>
                 
                 <div className={`${styles.productbtns}`}>
-                    <Button>Add to Cart</Button>
+                    <Button onClick={()=>addToCart(price, countProduct)}>Add to Cart</Button>
                 </div>
                 </div>
             </div>

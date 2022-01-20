@@ -1,6 +1,5 @@
 import * as Yup from 'yup';
 
-
 // export let RegisterSchema = Yup.object().shape({
 //     username: Yup.string().min(5, "Username must be 5 characters long").required('Required Username')
     // .test("is_exists", null, (value)=>{

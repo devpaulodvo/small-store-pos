@@ -35,14 +35,19 @@ const Login = (props) =>{
              validationSchema={LoginSchema}
              validateOnBlur={false}
              validateOnChange={false}
-             onSubmit={async (values, {setSubmitting, resetForm}) => {
+             onSubmit={async (values, {setSubmitting}) => {
                     setTimeout(async () => {
                         let result = await Axios.post("http://localhost:3001/login", {
                             username: username,
                             password: password
                         }, {withCredentials: true});
-                        
-                        localStorage.setItem("token",result.data.token)
+
+                        console.log(result);
+                        if(!result.data){
+                            window.alert("Invalid Login");
+                        }
+                        else{
+                            localStorage.setItem("token",result.data.token)
 
                         let isAuth = await Axios.get("http://localhost:3001/isUserAuth", 
                             {headers: {"x-access-token": localStorage.getItem("token")}});
@@ -50,6 +55,7 @@ const Login = (props) =>{
                         dispatch(authUpdater(isAuth.data))
                         history.push('/dashboard')
                         setSubmitting(false);
+                        }
                     }, 100);
             }}
             >

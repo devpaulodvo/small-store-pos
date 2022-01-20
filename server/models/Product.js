@@ -7,19 +7,19 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true
       },
       productName: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    price: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      price: {
       type: DataTypes.DOUBLE,
       allowNull: false
       // allowNull defaults to true
-    },
-    stat: {
+      },
+      stat: {
       type: DataTypes.STRING,
       allowNull: false
       // allowNull defaults to true
-    }
+      }
   }, {
     // Other model options go here
   });

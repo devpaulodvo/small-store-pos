@@ -16,7 +16,6 @@ const ProductList = () =>{
     const userIdSelector = useSelector(selectUserId);
 
     const [searchProduct, setSearchProduct] = useState('');
-    const [customer, setCustomer] = useState({});
     const [products, getProducts] = useState([]);
 
     useEffect(()=>{
@@ -53,6 +52,10 @@ const ProductList = () =>{
         
     }
 
+    const cancelTransaction = () => {
+        dispatch(useridUpdater(0));
+    }
+
     return(
         <React.Fragment>
             <Header/>
@@ -62,6 +65,7 @@ const ProductList = () =>{
             </div>) : 
             <div>
                 <ViewCart/>
+                <span className={`${styles.span}`} onClick={()=>cancelTransaction()}>Cancel Transaction</span>
                 <h1 className={`${styles.h1}`}>{userIdSelector.fn} {userIdSelector.ln}</h1>
                 <ProductFilter filteredProduct={filteredProduct}/>
                 <ul>
@@ -74,6 +78,7 @@ const ProductList = () =>{
                             filteredProductArray.map((product) =>
                                 <li style={{display: 'inline-block', marginRight: '5rem'}} key={product.productId}>
                                 <ProductItem 
+                                productId = {product.productId}
                                 productName={product.productName} 
                                 price={product.price}/>
                                 </li>
